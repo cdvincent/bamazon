@@ -15,6 +15,7 @@ connection.connect(function(err) {
 });
 
 function start() {
+    grandTotal = 0;
     inquirer.prompt([
         {
             name: "start",
@@ -28,7 +29,7 @@ function start() {
         showList();
         } else {
             console.log("Okay, Bye!");
-            return false;
+            process.exit(-1);
         }
     });
 }
@@ -36,6 +37,7 @@ function start() {
 function showList() {
     connection.query("SELECT * FROM products", function ( err, results) {
         if (err) throw err;
+        console.log("ID" + " | " + "Item" + " | " + "Dept" + " | " + "Price");
         for (var i = 0; i < results.length; i++) {
             console.log(results[i].item_id + " | " + results[i].product_name + " | " + results[i].department_name + " | " + results[i].price);
           }
@@ -67,8 +69,13 @@ function showList() {
             }
         }
         console.log("You have chosen: " + answer.amount + " " + chosenItem.product_name + "(s) | " + "$" + chosenItem.price + " each");
-        if (chosenItem.stock_quantity < parseInt(answer.amount)) {
+        if (chosenItem.stock_quantity === 0) {
+            console.log("I'm sorry, but that item is out of stock.");
+            console.log("--------------------------------------------");
+            exit();
+        } else if (chosenItem.stock_quantity > 0 && chosenItem.stock_quantity < parseInt(answer.amount)) {
             console.log("I'm sorry, there's only " + chosenItem.stock_quantity + " in stock.");
+            console.log("--------------------------------------------");
             exit();
         } else {
             chosenItem.stock_quantity -= answer.amount;
@@ -86,32 +93,34 @@ function showList() {
                 console.log("Your item(s) have been added to your cart.");
                 console.log("Item stock has been updated.");
                 total(chosenItem.price, answer.amount);
+                console.log("--------------------------------------------");
                 exit();
             })
         }
     })
 })
 }
+
 function exit() {
     inquirer.prompt([
         {
             name: "exit",
             type: "confirm",
             message: "Would you like to select another item?",
-            default: false
+            default: true
         },
     ])
     .then(function(answer) {
         if (answer.exit === true){
         showList();
         } else {
-            total();
+            total(0, 0);
             start();
         }
     });
 }
-let grandTotal = 0;
+// let grandTotal = 0;
 function total(price, amount) {
     grandTotal += (amount * price);
-    console.log(grandTotal.toFixed(2));
+    console.log("Your grand total is: " + grandTotal.toFixed(2));
 }

@@ -58,7 +58,7 @@ function showList() {
         {
             name: "amount",
             type: "input",
-            message: "How many would you like to buy?"
+            message: "How many would you like to buy?(integer)"
         }
     ])
     .then(function(answer) {
@@ -69,7 +69,11 @@ function showList() {
             }
         }
         console.log("You have chosen: " + answer.amount + " " + chosenItem.product_name + "(s) | " + "$" + chosenItem.price + " each");
-        if (chosenItem.stock_quantity === 0) {
+        if (answer.amount = "NaN"){
+            console.log("Please enter an integer. Cancelling item request.");
+            exit();
+        } else {
+        if (chosenItem.stock_quantity <= 0) {
             console.log("I'm sorry, but that item is out of stock.");
             console.log("--------------------------------------------");
             exit();
@@ -97,6 +101,7 @@ function showList() {
                 exit();
             })
         }
+    }
     })
 })
 }

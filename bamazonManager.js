@@ -112,11 +112,12 @@ function addInventory() {
         }
         console.log("You have chosen to add: " + answer.amount + " " + chosenItem.product_name + "(s)");
             console.log("--------------------------------------------");
-            if (answer.amount = "NaN"){
+            let amount = parseInt(answer.amount);
+            if (amount === "NaN"){
                 console.log("Please enter an integer. Cancelling item request.");
                 exit();
             } else {
-            chosenItem.stock_quantity += parseInt(answer.amount);
+            chosenItem.stock_quantity += amount;
             connection.query("UPDATE products SET ? WHERE ?",
             [
                 {
@@ -178,10 +179,10 @@ function addProduct() {
         }
     ])
     .then(function(answer) {
-        if (answer.price = "NaN"){
+        if (answer.price === "NaN"){
             console.log("Please enter an integer for the quantity field. Cancelling add item request.");
             exit();
-        } else if (answer.quantity = "NaN") {
+        } else if (answer.quantity === "NaN") {
             console.log("Please enter an integer for the price field. Cancelling add item request.");
         }else {
         connection.query("INSERT INTO products SET ?",

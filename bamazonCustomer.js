@@ -68,8 +68,9 @@ function showList() {
                 chosenItem = results[i];
             }
         }
-        console.log("You have chosen: " + answer.amount + " " + chosenItem.product_name + "(s) | " + "$" + chosenItem.price + " each");
-        if (answer.amount = "NaN"){
+        let amount = parseInt(answer.amount);
+        console.log("You have chosen: " + amount + " " + chosenItem.product_name + "(s) | " + "$" + chosenItem.price + " each");
+        if (amount === "NaN"){
             console.log("Please enter an integer. Cancelling item request.");
             exit();
         } else {

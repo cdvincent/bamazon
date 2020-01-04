@@ -1,0 +1,3 @@
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Bread", "Bakery", 3.48, 19), ("Sirloin", "Deli", 7.35, 17), ("Cheese", "Dairy", 2.49, 36), ("Pizza", "Frozen", 4.35, 4), ("Ham", "Deli", 4.59, 33), ("Milk", "Dairy", 2.75, 69), ("Tomato", "Vegetables", .98, 20), ("Carrot", "Vegetables", .88, 12), ("Apple", "Fruits", .75, 25), ("Orange", "Fruits", .95, 16), ("Pineapple", "Fruits", 1.25, 6), ("Potato", "Vegetables", 1.13, 18), ("Cookies", "Bakery", 2.15, 30)
+;

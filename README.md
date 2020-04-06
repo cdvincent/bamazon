@@ -1,8 +1,21 @@
-# bamazon
+<h1>Bamazon</h1>
 
-<h2>Bamazon App</h2>
+<h4>Link</h4>
 
-<p>Bamazon is a shopping experience via the command line. It is an application that allows users to view a list of products, select the product they need, the quantity of that product they want, and select more products or get the total that they owe for their selections. There is also a manager version allowing the user to view all products and how many of each there are, view a list of products that have a low quantity, add to the quantity of an item, and add a new item. The items are maintained via a SQL database which updates the quantities as they are purchased by customers or added by managers.</p><br>
+<p>https://github.com/cdvincent/bamazon</p>
+
+<h4>Technology used</h4>
+
+<ul>
+    <li>Javascript</li>
+    <li>MySQL</li>
+</ul>
+
+<h2>Description</h2>
+
+<p>Bamazon is a shopping experience via the command line. It is an application that allows users to view a list of products, select the product they need, the quantity of that product they want, and select more products or get the total that they owe for their selections. There is also a manager version allowing the user to view all products and how many of each there are, view a list of products that have a low quantity, add to the quantity of an item, and add a new item. The items are maintained via a SQL database which updates the quantities as they are purchased by customers or added by managers.</p>
+
+<h2>Tutorial</h2>
 
 <p>Navigate to the program in the terminal and type "npm i" to install the dependencies (mysql and inquirer).</p><br>
 
